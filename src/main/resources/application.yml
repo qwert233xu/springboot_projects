@@ -1,0 +1,28 @@
+# 基础配置文件
+
+spring:
+  profiles:
+    active: dev     # 配置文件环境
+  http:
+    encoding:
+      force: true
+      charset: utf-8
+      enabled: true
+  mvc:
+    throw-exception-if-no-handler-found: true     # 接口404时抛出异常
+  resources:
+    add-mappings: false
+
+server:
+  servlet:
+    context-path: /v1     # 应用路径，可以通过设置路径来控制版本
+  tomcat:
+    uri-encoding: UTF-8
+
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl #这个是可以打印sql、参数、查询结果的,只会打印到控制台不会输出到日志文件中
+    #org.apache.ibatis.logging.log4j.Log4jImpl:这个不打印查询结果
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.example.plan.entity # 指定的包名
